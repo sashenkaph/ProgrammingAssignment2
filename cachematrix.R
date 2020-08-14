@@ -18,19 +18,17 @@ makeCacheMatrix <- function(m = matrix()) {
          getsolve = getsolve)
 }
 
-## Returns the inverse of a matrix 
+## Returns the inverse of an initial matrix 
 ## If the inverse of a matrix has not been stored in a cache yet then 
 ## the function calculates and caches it
 
 cacheSolve <- function(x, ...) {
-    ## Return a matrix that is the inverse of initial one 'm'
     inv <- x$getsolve()
     if(!is.null(inv)){
         message("getting the inverse a matrix from the cache")
         return(inv)
     }
     m <- x$get()
-##    inv <- solve(m, diag(ncol(m)), ...)
     inv <- solve(m, ...)
     x$setsolve(inv)
     inv
